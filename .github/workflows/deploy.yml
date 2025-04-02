@@ -63,7 +63,10 @@ jobs:
           
           # Build with the correct base path
           NEXT_PUBLIC_BASE_PATH="/$REPO_NAME" pnpm run build
-          
+        
+      - name: Ensure output directory exists
+        run: mkdir  -p out
+        
       - name: Create .nojekyll file
         run: touch out/.nojekyll
         
