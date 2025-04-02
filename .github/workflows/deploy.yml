@@ -18,10 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -45,39 +45,41 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
         
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Build with Next.js
         run: |
-          # Get repository name for base path
+          # Get repository name for correct base path
           REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
           echo "Using base path: /$REPO_NAME"
           
-          # Build with the correct base path
+          # Set base path and build
           NEXT_PUBLIC_BASE_PATH="/$REPO_NAME" pnpm run build
-          
-      - name: Create output directory
-        run: mkdir -p out
+
+          # Ensure correct output directory
+          mkdir -p public
+          mv ./out ./public || mv ./dist ./public || mv .next ./public
+
+      - name: Debug Build Output
+        run: ls -la public
 
       - name: Create .nojekyll file
-        run: touch out/.nojekyll
+        run: touch public/.nojekyll
         
-      - name: Create 404 page that redirects to index
+      - name: Create 404 page for redirecting
         run: |
-          cat > out/404.html << EOL
+          cat > public/404.html << EOL
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
               <title>Redirecting...</title>
               <script>
-                // Get the repository name from the URL
                 const repoName = location.pathname.split('/')[1];
-                // Redirect to the homepage with the correct base path
                 window.location.href = '/' + repoName;
               </script>
             </head>
@@ -87,10 +89,10 @@ jobs:
           </html>
           EOL
 
-      - name: Upload artifact
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./public
 
   deploy:
     environment:
