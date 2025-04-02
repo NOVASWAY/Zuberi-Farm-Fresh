@@ -21,6 +21,9 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  output: 'export', // Ensures static export for GitHub Pages
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH, // Uses repo name for correct routing
+  trailingSlash: true, // Ensures correct routing
 }
 
 mergeConfig(nextConfig, userConfig)
