@@ -49,22 +49,25 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           enablement: true
-
+        
       - name: Install dependencies
         run: pnpm install
-
+        
       - name: Build with Next.js
         run: |
+          # Get repository name for base path
           REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
           echo "Using base path: /$REPO_NAME"
+          
+          # Build with the correct base path
           NEXT_PUBLIC_BASE_PATH="/$REPO_NAME" pnpm run build
-
+          
       - name: Create output directory
         run: mkdir -p out
 
       - name: Create .nojekyll file
         run: touch out/.nojekyll
-
+        
       - name: Create 404 page that redirects to index
         run: |
           cat > out/404.html << EOL
@@ -74,7 +77,9 @@ jobs:
               <meta charset="utf-8">
               <title>Redirecting...</title>
               <script>
+                // Get the repository name from the URL
                 const repoName = location.pathname.split('/')[1];
+                // Redirect to the homepage with the correct base path
                 window.location.href = '/' + repoName;
               </script>
             </head>
