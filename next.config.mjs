@@ -22,9 +22,7 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
   output: 'export', // Ensures static export for GitHub Pages deployment
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '', // Uses repo name as base path dynamically
   trailingSlash: true, // Ensures URLs are appended with trailing slashes for routing
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '', // Prefixes assets for GitHub Pages correctly
 };
 
 mergeConfig(nextConfig, userConfig);
