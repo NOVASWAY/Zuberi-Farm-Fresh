@@ -18,10 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -36,7 +36,6 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - name: Setup pnpm cache
         uses: actions/cache@v3
         with:
@@ -44,42 +43,41 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
-      - name: Setup GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
         
       - name: Install dependencies
         run: pnpm install
-
+        
       - name: Build with Next.js
         run: |
-          # Get repository name for correct base path
-          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          # Use the correct repository name for the base path
+          REPO_NAME="Zuberi-Farm-Fresh"
           echo "Using base path: /$REPO_NAME"
           
-          # Set base path and build
-          NEXT_PUBLIC_BASE_PATH="/$Zuberi-Farm-Fresh" pnpm run build
-
-          # Ensure correct output directory
-          mkdir -p public
-          mv ./out ./public || mv ./dist ./public || mv .next ./public
-
-      - name: Debug Build Output
-        run: ls -la public
+          # Build with the correct base path
+          NEXT_PUBLIC_BASE_PATH="/$REPO_NAME" pnpm run build
+          
+      - name: Create output directory
+        run: mkdir -p out
 
       - name: Create .nojekyll file
-        run: touch public/.nojekyll
+        run: touch out/.nojekyll
         
-      - name: Create 404 page for redirecting
+      - name: Create 404 page that redirects to index
         run: |
-          cat > public/404.html << EOL
+          cat > out/404.html << EOL
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
               <title>Redirecting...</title>
               <script>
+                // Get the repository name from the URL
                 const repoName = location.pathname.split('/')[1];
+                // Redirect to the homepage with the correct base path
                 window.location.href = '/' + repoName;
               </script>
             </head>
@@ -88,11 +86,10 @@ jobs:
             </body>
           </html>
           EOL
-
-      - name: Upload GitHub Pages artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./out
 
   deploy:
     environment:
@@ -104,3 +101,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          enablement: true
