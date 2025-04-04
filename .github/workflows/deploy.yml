@@ -58,7 +58,7 @@ jobs:
           echo "Using base path: /$REPO_NAME"
           
           # Set base path and build
-          NEXT_PUBLIC_BASE_PATH="/$REPO_NAME" pnpm run build
+          NEXT_PUBLIC_BASE_PATH="/$Zuberi-Farm-Fresh" pnpm run build
 
           # Ensure correct output directory
           mkdir -p public
