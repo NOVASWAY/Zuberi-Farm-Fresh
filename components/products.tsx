@@ -1,4 +1,6 @@
 import { getAssetPath } from "@/utils/path-utils"
+import cauliflowerImage from '@/public/images/cauliflower.png';
+import coloredCapsicumImage from '@/public/images/colored-capsicum.png';
 
 export function Products() {
   const products = [
@@ -16,7 +18,7 @@ export function Products() {
     {
       name: "Cauliflower",
       description: "Snow-white, compact cauliflower heads",
-      image: "/images/cauliflower.png",
+      image: cauliflowerImage.src,
     },
     {
       name: "Cucumber",
@@ -64,7 +66,7 @@ export function Products() {
     {
       name: "Colored Capsicum",
       description: "Vibrant red, yellow, and orange bell peppers",
-      image: "/images/colored-capsicum.png",
+      image: coloredCapsicumImage.src,
     },
     {
       name: "Mushrooms",
