@@ -2,7 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Merriweather } from "next/font/google"
 import "./globals.css"
+import ChatbotWrapper from "./components/ChatbotWrapper"
 
+// Importing the fonts for styling
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const merriweather = Merriweather({
   weight: ["400", "700"],
@@ -13,7 +15,7 @@ const merriweather = Merriweather({
 export const metadata: Metadata = {
   title: "Zuberi Fresh Farm",
   description: "Premium horticulture farm dedicated to growing the highest quality vegetables and fruits",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -23,11 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${merriweather.variable} font-sans`}>{children}</body>
+      <body className={`${inter.variable} ${merriweather.variable} font-sans`}>
+        {children}
+        <ChatbotWrapper />
+      </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
