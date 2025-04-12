@@ -18,7 +18,7 @@ export function Products() {
     {
       name: "Cauliflower",
       description: "Snow-white, compact cauliflower heads",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cauliflower-NkXdGUruaoYoFh2YaYWP3D6ApVrMjh.png",
+      image: "/images/cauliflower-NkXdGUruaoYoFh2YaYWP3D6ApVrMjh.png",
     },
     {
       name: "Cucumber",
