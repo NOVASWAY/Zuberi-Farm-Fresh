@@ -1,6 +1,4 @@
 import { getAssetPath } from "@/utils/path-utils"
-import cauliflowerImage from '@/public/images/cauliflower.png';
-import coloredCapsicumImage from '@/public/images/colored-capsicum.png';
 
 export function Products() {
   const products = [
@@ -18,7 +16,7 @@ export function Products() {
     {
       name: "Cauliflower",
       description: "Snow-white, compact cauliflower heads",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cauliflower-NkXdGUruaoYoFh2YaYWP3D6ApVrMjh.png",
+      image: "/images/cauliflower.png",
     },
     {
       name: "Cucumber",
@@ -66,7 +64,7 @@ export function Products() {
     {
       name: "Colored Capsicum",
       description: "Vibrant red, yellow, and orange bell peppers",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/colored-capsicum-ZUGsoikYG1mgRZ5YmrPLrfDOrHksXv.png",
+      image: "/images/colored-capsicum.png",
     },
     {
       name: "Mushrooms",
