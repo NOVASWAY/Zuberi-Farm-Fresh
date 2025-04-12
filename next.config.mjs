@@ -23,6 +23,8 @@ const nextConfig = {
   },
   output: 'export', // Ensures static export for GitHub Pages deployment
   trailingSlash: true, // Ensures URLs are appended with trailing slashes for routing
+  assetPrefix: './',
+  basePath: '',
 };
 
 mergeConfig(nextConfig, userConfig);

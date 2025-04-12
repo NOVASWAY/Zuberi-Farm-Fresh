@@ -1,4 +1,5 @@
 import { getAssetPath } from "@/utils/path-utils"
+import Image from 'next/image'
 
 export function Products() {
   const products = [
@@ -16,7 +17,7 @@ export function Products() {
     {
       name: "Cauliflower",
       description: "Snow-white, compact cauliflower heads",
-      image: "/images/cauliflower.png",
+      image: "./images/cauliflower.png",
     },
     {
       name: "Cucumber",
@@ -64,7 +65,7 @@ export function Products() {
     {
       name: "Colored Capsicum",
       description: "Vibrant red, yellow, and orange bell peppers",
-      image: "/images/colored-capsicum.png",
+      image: "./images/colored-capsicum.png",
     },
     {
       name: "Mushrooms",
@@ -94,9 +95,10 @@ export function Products() {
               <div className="p-6 flex flex-col items-center">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 h-40 w-40 flex items-center justify-center">
                   <img
-                    src={product.image.startsWith("http") ? product.image : getAssetPath(product.image)}
+                    src={product.image}
                     alt={product.name}
                     className="object-contain max-h-[150px] max-w-[150px]"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-green-800 dark:text-green-300">{product.name}</h3>
