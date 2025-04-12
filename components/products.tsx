@@ -18,7 +18,7 @@ export function Products() {
     {
       name: "Cauliflower",
       description: "Snow-white, compact cauliflower heads",
-      image: cauliflowerImage.src,
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cauliflower-NkXdGUruaoYoFh2YaYWP3D6ApVrMjh.png",
     },
     {
       name: "Cucumber",
@@ -66,7 +66,7 @@ export function Products() {
     {
       name: "Colored Capsicum",
       description: "Vibrant red, yellow, and orange bell peppers",
-      image: coloredCapsicumImage.src,
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/colored-capsicum-ZUGsoikYG1mgRZ5YmrPLrfDOrHksXv.png",
     },
     {
       name: "Mushrooms",
