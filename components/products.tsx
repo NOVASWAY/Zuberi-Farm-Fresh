@@ -94,12 +94,15 @@ export function Products() {
             >
               <div className="p-6 flex flex-col items-center">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 h-40 w-40 flex items-center justify-center">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="object-contain max-h-[150px] max-w-[150px]"
-                    loading="lazy"
-                  />
+                  <div className="relative h-[150px] w-[150px]">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-contain"
+                      sizes="150px"
+                    />
+                  </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-green-800 dark:text-green-300">{product.name}</h3>
                 <p className="text-green-600 dark:text-green-400 text-center">{product.description}</p>
@@ -112,4 +115,3 @@ export function Products() {
     </section>
   )
 }
-
