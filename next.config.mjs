@@ -22,9 +22,9 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
   output: 'export', // Ensures static export for GitHub Pages deployment
-  trailingSlash: true, // Ensures URLs are appended with trailing slashes for routing
-  assetPrefix: '/',
-  basePath: '',
+  trailingSlash: false, // Disable trailing slashes to prevent routing issues
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Zuberi-Farm-Fresh' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/Zuberi-Farm-Fresh' : '',
 };
 
 mergeConfig(nextConfig, userConfig);

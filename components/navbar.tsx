@@ -4,10 +4,12 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +28,7 @@ export function Navbar() {
     
     // Handle products page navigation
     if (id === "products") {
-      window.location.href = "/products"
+      router.push("/products")
       return
     }
     
