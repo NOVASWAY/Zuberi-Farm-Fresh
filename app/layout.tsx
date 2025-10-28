@@ -14,7 +14,12 @@ const merriweather = Merriweather({
 export const metadata: Metadata = {
   title: "Zuberi Fresh Farm",
   description: "Premium horticulture farm dedicated to growing the highest quality vegetables and fruits",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: '/favicon.png?v=2',
+    shortcut: '/favicon-16x16.png?v=2',
+    apple: '/apple-touch-icon.png?v=2',
+  },
 }
 
 export default function RootLayout({
@@ -26,13 +31,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${merriweather.variable} font-sans`}>
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="xvYYkH-lfMIV_J-cbcAZ6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-            `,
-          }}
-        />
       </body>
     </html>
   )

@@ -23,6 +23,13 @@ export function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     setIsMenuOpen(false)
+    
+    // Handle products page navigation
+    if (id === "products") {
+      window.location.href = "/products"
+      return
+    }
+    
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
