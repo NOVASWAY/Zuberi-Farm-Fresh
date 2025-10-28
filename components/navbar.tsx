@@ -4,12 +4,10 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,19 +24,11 @@ export function Navbar() {
     e.preventDefault()
     setIsMenuOpen(false)
     
-    // Handle products page navigation
-    if (id === "products") {
-      router.push("/products")
-      return
-    }
-    
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
   }
-
-  const navItems = ["about", "proprietors", "products", "services", "contact"]
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-green-200 dark:border-green-800 bg-white/80 dark:bg-green-950/80 backdrop-blur-sm">
@@ -55,16 +45,40 @@ export function Navbar() {
           </span>
         </Link>
         <nav className="hidden md:flex gap-6">
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item}`}
-              onClick={(e) => handleNavClick(e, item)}
-              className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </a>
-          ))}
+          <a
+            href="#about"
+            onClick={(e) => handleNavClick(e, "about")}
+            className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="#proprietors"
+            onClick={(e) => handleNavClick(e, "proprietors")}
+            className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
+          >
+            Proprietors
+          </a>
+          <Link
+            href="/products/"
+            className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
+          >
+            Products
+          </Link>
+          <a
+            href="#services"
+            onClick={(e) => handleNavClick(e, "services")}
+            className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
+          >
+            Services
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, "contact")}
+            className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
+          >
+            Contact
+          </a>
         </nav>
         <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -73,16 +87,40 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden absolute left-0 right-0 w-full bg-white dark:bg-green-950 border-b border-green-200 dark:border-green-800">
           <nav className="container mx-auto flex flex-col px-4 py-4">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                onClick={(e) => handleNavClick(e, item)}
-                className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </a>
-            ))}
+            <a
+              href="#about"
+              onClick={(e) => handleNavClick(e, "about")}
+              className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+            >
+              About
+            </a>
+            <a
+              href="#proprietors"
+              onClick={(e) => handleNavClick(e, "proprietors")}
+              className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+            >
+              Proprietors
+            </a>
+            <Link
+              href="/products/"
+              className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+            >
+              Products
+            </Link>
+            <a
+              href="#services"
+              onClick={(e) => handleNavClick(e, "services")}
+              className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+            >
+              Services
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "contact")}
+              className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
+            >
+              Contact
+            </a>
           </nav>
         </div>
       )}
