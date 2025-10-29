@@ -42,27 +42,6 @@ jobs:
 
       - name: Create .nojekyll file
         run: touch out/.nojekyll
-        
-      - name: Create 404 page that redirects to index
-        run: |
-          cat > out/404.html << EOL
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <title>Redirecting...</title>
-              <script>
-                // Get the repository name from the URL
-                const repoName = location.pathname.split('/')[1];
-                // Redirect to the homepage with the correct base path
-                window.location.href = '/' + repoName;
-              </script>
-            </head>
-            <body>
-              <p>Redirecting to homepage...</p>
-            </body>
-          </html>
-          EOL
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
