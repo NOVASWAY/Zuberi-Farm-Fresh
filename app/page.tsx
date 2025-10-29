@@ -18,6 +18,7 @@ export default function Home() {
         <Services />
       </main>
       <Footer />
+      {/* Deployment test - updated */}
     </div>
   )
 }
