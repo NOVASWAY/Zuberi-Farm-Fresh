@@ -35,7 +35,18 @@ jobs:
         run: npm install --legacy-peer-deps
         
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          echo "Starting Next.js build..."
+          npm run build
+          echo "Build completed, checking output..."
+          ls -la out/
+          echo "Checking for errors in build..."
+          if [ -f "out/index.html" ]; then
+            echo "✅ Main page built successfully"
+          else
+            echo "❌ Main page not found!"
+            exit 1
+          fi
         
       - name: Verify Next.js build completed
         run: |
@@ -59,9 +70,18 @@ jobs:
           echo "Favicon files:"
           ls -la out/favicon*
           echo "Category pages:"
-          ls -la out/products/category/ || echo "Category directory not found"
+          if [ -d "out/products/category" ]; then
+            echo "✅ Category directory exists"
+            ls -la out/products/category/
+          else
+            echo "❌ Category directory missing!"
+            echo "Products directory contents:"
+            ls -la out/products/ || echo "Products directory not found"
+          fi
           echo "All products directories:"
           find out/products -type d -name "*" | head -10
+          echo "Checking for specific category files:"
+          ls -la out/products/category/international-vegetables.html || echo "international-vegetables.html not found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
