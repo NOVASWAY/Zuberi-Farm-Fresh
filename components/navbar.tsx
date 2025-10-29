@@ -60,7 +60,7 @@ export function Navbar() {
             Proprietors
           </a>
           <Link
-            href="/products/"
+            href="/products"
             className="text-sm font-medium text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100 transition-colors"
           >
             Products
@@ -102,7 +102,7 @@ export function Navbar() {
               Proprietors
             </a>
             <Link
-              href="/products/"
+              href="/products"
               className="py-2 text-green-700 hover:text-green-900 dark:text-green-300 dark:hover:text-green-100"
             >
               Products
