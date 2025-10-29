@@ -57,8 +57,25 @@ jobs:
           fi
           echo "Build completed successfully"
           
-      - name: Create output directory
-        run: mkdir -p out
+          # Verify critical files exist
+          echo "Verifying critical files..."
+          if [ ! -f "out/index.html" ]; then
+            echo "ERROR: index.html not found!"
+            exit 1
+          fi
+          if [ ! -d "out/products/category" ]; then
+            echo "ERROR: Category pages directory not found!"
+            exit 1
+          fi
+          if [ ! -f "out/products/category/international-vegetables.html" ]; then
+            echo "ERROR: international-vegetables.html not found!"
+            exit 1
+          fi
+          if [ ! -f "out/favicon.png" ]; then
+            echo "ERROR: favicon.png not found!"
+            exit 1
+          fi
+          echo "✅ All critical files verified"
 
       - name: Create .nojekyll file
         run: touch out/.nojekyll
