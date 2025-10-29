@@ -22,7 +22,7 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
   output: 'export', // Ensures static export for GitHub Pages deployment
-  trailingSlash: false, // Disable trailing slashes for GitHub Pages
+  trailingSlash: true, // Enable trailing slashes for GitHub Pages
   assetPrefix: '',
   basePath: '',
 };

@@ -16,7 +16,7 @@ export default function NotFound() {
         
         <div className="space-y-4">
           <Link
-            href="/products"
+            href="/products/"
             className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200 mr-4"
           >
             Browse All Products
