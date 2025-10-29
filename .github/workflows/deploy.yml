@@ -42,6 +42,15 @@ jobs:
 
       - name: Create .nojekyll file
         run: touch out/.nojekyll
+        
+      - name: Verify build output
+        run: |
+          echo "Build output contents:"
+          ls -la out/
+          echo "Favicon files:"
+          ls -la out/favicon*
+          echo "Category pages:"
+          ls -la out/products/category/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
