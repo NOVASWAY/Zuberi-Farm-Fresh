@@ -23,8 +23,8 @@ const nextConfig = {
   },
   output: 'export', // Ensures static export for GitHub Pages deployment
   trailingSlash: false, // Disable trailing slashes for GitHub Pages
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/Zuberi-Farm-Fresh' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '/Zuberi-Farm-Fresh' : '',
+  assetPrefix: '',
+  basePath: '',
 };
 
 mergeConfig(nextConfig, userConfig);
