@@ -79,7 +79,7 @@ export function Products() {
         {/* Call to Action */}
         <div className="mt-12 text-center">
           <Link
-            href="/products/"
+            href="/products"
             className="inline-flex items-center px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
           >
             Explore All Products

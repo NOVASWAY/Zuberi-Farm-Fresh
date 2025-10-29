@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Fresh Products - Zuberi Fresh Farm</title>
+    <link rel="stylesheet" href="/_next/static/css/app/layout.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0fdf4;
+            color: #166534;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            transition: background-color 0.2s;
+        }
+        .back-btn:hover {
+            background-color: #15803d;
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #166534;
+        }
+        .subtitle {
+            font-size: 1.25rem;
+            color: #166534;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .category {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dcfce7;
+        }
+        .category-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #166534;
+        }
+        .category-description {
+            text-align: center;
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+        .product-count {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .product {
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #dcfce7;
+            border-radius: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: translateY(-2px);
+        }
+        .product-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin: 0 auto 0.5rem;
+            display: block;
+        }
+        .product-name {
+            font-weight: 600;
+            color: #166534;
+            margin-bottom: 0.25rem;
+        }
+        .product-link {
+            color: #16a34a;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        .product-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Back to Home</a>
+        
+        <div class="header">
+            <h1 class="title">Our Fresh Products</h1>
+            <p class="subtitle">
+                Discover our wide range of fresh vegetables, from international favorites to traditional African leafy greens. 
+                Each product is grown with care to deliver exceptional flavor and nutrition.
+            </p>
+        </div>
+
+        <div class="categories">
+            <div class="category">
+                <div class="category-icon">🥬</div>
+                <h2 class="category-title">Fresh Vegetables</h2>
+                <p class="category-description">Premium quality vegetables grown with care</p>
+                <p class="product-count">14 products available</p>
+                <div class="products-grid">
+                    <div class="product">
+                        <img src="/images/green-capsicum.png" alt="Green Capsicum" class="product-image">
+                        <div class="product-name">Green Capsicum</div>
+                        <a href="/products/green-capsicum" class="product-link">View Details</a>
+                    </div>
+                    <div class="product">
+                        <img src="/images/broccoli.png" alt="Broccoli" class="product-image">
+                        <div class="product-name">Broccoli</div>
+                        <a href="/products/broccoli" class="product-link">View Details</a>
+                    </div>
+                    <div class="product">
+                        <img src="/images/cauliflower.png" alt="Cauliflower" class="product-image">
+                        <div class="product-name">Cauliflower</div>
+                        <a href="/products/cauliflower" class="product-link">View Details</a>
+                    </div>
+                    <div class="product">
+                        <img src="/images/tomatoes.png" alt="Tomatoes" class="product-image">
+                        <div class="product-name">Tomatoes</div>
+                        <a href="/products/tomatoes" class="product-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🌿</div>
+                <h2 class="category-title">African Leafy Vegetables</h2>
+                <p class="category-description">Traditional African leafy greens rich in nutrients</p>
+                <p class="product-count">1 product available</p>
+                <div class="products-grid">
+                    <div class="product">
+                        <img src="/images/spider-plant.png" alt="Spider Plant" class="product-image">
+                        <div class="product-name">Spider Plant</div>
+                        <a href="/products/spider-plant" class="product-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🌱</div>
+                <h2 class="category-title">Nursery Products</h2>
+                <p class="category-description">High-quality seedlings and plants</p>
+                <p class="product-count">1 product available</p>
+                <div class="products-grid">
+                    <div class="product">
+                        <img src="/images/nursery-seedlings.png" alt="Nursery Seedlings" class="product-image">
+                        <div class="product-name">Nursery Seedlings</div>
+                        <a href="/products/nursery-seedlings" class="product-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
