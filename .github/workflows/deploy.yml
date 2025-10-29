@@ -36,6 +36,15 @@ jobs:
         
       - name: Build with Next.js
         run: npm run build
+        
+      - name: Verify Next.js build completed
+        run: |
+          echo "Checking if build completed successfully..."
+          if [ ! -d "out" ]; then
+            echo "ERROR: out directory not found!"
+            exit 1
+          fi
+          echo "Build completed successfully"
           
       - name: Create output directory
         run: mkdir -p out
@@ -50,7 +59,9 @@ jobs:
           echo "Favicon files:"
           ls -la out/favicon*
           echo "Category pages:"
-          ls -la out/products/category/
+          ls -la out/products/category/ || echo "Category directory not found"
+          echo "All products directories:"
+          find out/products -type d -name "*" | head -10
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
