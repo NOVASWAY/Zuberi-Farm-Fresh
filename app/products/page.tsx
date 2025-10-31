@@ -76,7 +76,7 @@ export default function ProductsPage() {
                   >
                     <div className="p-6">
                       {/* Product Image */}
-                      <div className="relative h-40 w-full mb-4 flex items-center justify-center">
+                      <div className="relative h-40 w-full mb-4 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded">
                         <Image
                           src={product.image}
                           alt={product.name}
