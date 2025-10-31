@@ -37,15 +37,34 @@ jobs:
       - name: Build with Next.js
         run: |
           echo "Starting Next.js build..."
-          npm run build
+          echo "Checking productCategories import before build..."
+          node -e "const { productCategories } = require('./lib/product-data.ts'); console.log('Categories:', productCategories.map(c => c.id).join(', '));" 2>&1 || echo "Could not check categories (expected if TypeScript)"
+          npm run build 2>&1 | tee build.log
+          echo ""
+          echo "=== BUILD LOG ANALYSIS ==="
+          echo "Checking for category-related routes in build log:"
+          grep -i "category\|products/category" build.log || echo "No category mentions in build log"
+          echo ""
+          echo "Checking for static generation messages:"
+          grep -i "static\|generating\|route" build.log | head -20 || echo "No generation messages found"
+          echo ""
           echo "Build completed, checking output..."
           ls -la out/
+          echo ""
           echo "Checking for errors in build..."
           if [ -f "out/index.html" ]; then
             echo "✅ Main page built successfully"
           else
             echo "❌ Main page not found!"
             exit 1
+          fi
+          echo ""
+          echo "Checking if products directory exists immediately after build:"
+          if [ -d "out/products" ]; then
+            echo "✅ Products directory exists"
+            find out/products -type d | head -10
+          else
+            echo "❌ Products directory NOT found right after build!"
           fi
         
       - name: Debug build output
