@@ -67,8 +67,8 @@ jobs:
             echo "ERROR: Category pages directory not found!"
             exit 1
           fi
-          if [ ! -f "out/products/category/international-vegetables.html" ]; then
-            echo "ERROR: international-vegetables.html not found!"
+          if [ ! -f "out/products/category/international-vegetables/index.html" ]; then
+            echo "ERROR: international-vegetables/index.html not found!"
             exit 1
           fi
           if [ ! -f "out/favicon.png" ]; then
@@ -98,7 +98,7 @@ jobs:
           echo "All products directories:"
           find out/products -type d -name "*" | head -10
           echo "Checking for specific category files:"
-          ls -la out/products/category/international-vegetables.html || echo "international-vegetables.html not found"
+          ls -la out/products/category/international-vegetables/index.html || echo "international-vegetables/index.html not found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
