@@ -15,6 +15,13 @@ const nextConfig = {
   },
   images: {
     unoptimized: true, // Disable Next.js image optimization (important for GitHub Pages)
+    // Note: Image optimization is disabled, so Next.js cache vulnerability doesn't apply
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
+      },
+    ],
   },
   experimental: {
     webpackBuildWorker: true,
@@ -25,6 +32,8 @@ const nextConfig = {
   trailingSlash: true, // Enable trailing slashes for GitHub Pages compatibility
   assetPrefix: '',
   basePath: '',
+  // Security: Static export prevents server-side vulnerabilities
+  poweredByHeader: false, // Remove X-Powered-By header
 };
 
 mergeConfig(nextConfig, userConfig);
