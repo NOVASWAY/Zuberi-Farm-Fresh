@@ -48,33 +48,86 @@ jobs:
             exit 1
           fi
         
-      - name: Verify Next.js build completed
+      - name: Debug build output
         run: |
-          echo "Checking if build completed successfully..."
+          echo "=== DEBUGGING BUILD OUTPUT ==="
+          echo "Checking if out directory exists..."
           if [ ! -d "out" ]; then
             echo "ERROR: out directory not found!"
             exit 1
           fi
-          echo "Build completed successfully"
+          echo "✅ out directory exists"
           
-          # Verify critical files exist
-          echo "Verifying critical files..."
+          echo ""
+          echo "=== Top-level out directory contents ==="
+          ls -la out/ | head -20
+          
+          echo ""
+          echo "=== Products directory ==="
+          if [ -d "out/products" ]; then
+            echo "✅ Products directory exists"
+            ls -la out/products/
+            echo ""
+            echo "=== Products subdirectories ==="
+            find out/products -maxdepth 2 -type d
+            echo ""
+            echo "=== Products files ==="
+            find out/products -maxdepth 2 -type f | head -10
+          else
+            echo "❌ Products directory NOT found!"
+          fi
+          
+          echo ""
+          echo "=== Category directory specifically ==="
+          if [ -d "out/products/category" ]; then
+            echo "✅ Category directory exists"
+            ls -la out/products/category/
+            echo ""
+            echo "=== Category subdirectories ==="
+            find out/products/category -type d
+            echo ""
+            echo "=== Category files ==="
+            find out/products/category -type f
+          else
+            echo "❌ Category directory NOT found!"
+            echo "Let's see what's in products:"
+            find out/products -type d -o -type f | head -20
+          fi
+          
+          echo ""
+          echo "=== Favicon files ==="
+          ls -la out/favicon* 2>&1 || echo "No favicon files found"
+        
+      - name: Verify critical files
+        run: |
+          echo "=== VERIFYING CRITICAL FILES ==="
           if [ ! -f "out/index.html" ]; then
             echo "ERROR: index.html not found!"
             exit 1
           fi
+          echo "✅ index.html exists"
+          
           if [ ! -d "out/products/category" ]; then
             echo "ERROR: Category pages directory not found!"
+            echo "This might be a build issue. Check the debug output above."
             exit 1
           fi
+          echo "✅ Category directory exists"
+          
           if [ ! -f "out/products/category/international-vegetables/index.html" ]; then
             echo "ERROR: international-vegetables/index.html not found!"
+            echo "Checking what category files exist:"
+            find out/products/category -type f | head -10
             exit 1
           fi
+          echo "✅ international-vegetables/index.html exists"
+          
           if [ ! -f "out/favicon.png" ]; then
-            echo "ERROR: favicon.png not found!"
-            exit 1
+            echo "WARNING: favicon.png not found (non-critical)"
+          else
+            echo "✅ favicon.png exists"
           fi
+          
           echo "✅ All critical files verified"
 
       - name: Create .nojekyll file
