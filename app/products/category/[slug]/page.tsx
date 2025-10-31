@@ -70,7 +70,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             Home
           </Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-green-800 dark:hover:text-green-300">
+          <Link href="/products/" className="hover:text-green-800 dark:hover:text-green-300">
             Products
           </Link>
           <span>/</span>
@@ -92,7 +92,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </p>
           <div className="mt-4">
             <Link
-              href="/products"
+              href="/products/"
               className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200"
             >
               ← Back to All Products
@@ -105,7 +105,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {products.map((product) => (
             <Link
               key={product.id}
-              href={`/products/${product.id}`}
+              href={`/products/${product.id}/`}
               className="group bg-white dark:bg-green-900/50 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-green-100 dark:border-green-800"
             >
               <div className="p-6">
