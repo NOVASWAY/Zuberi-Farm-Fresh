@@ -21,7 +21,6 @@ export function Hero() {
 
           <p className="text-xl sm:text-2xl md:text-3xl text-green-700 dark:text-green-200 max-w-2xl">
             Quality vegetables and fruits
-            <span className="block text-sm text-red-600 dark:text-red-400 mt-2">🚀 DEPLOYMENT TEST v2 - CACHE BUST</span>
           </p>
 
           <div className="pt-6">

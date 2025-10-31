@@ -49,20 +49,6 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* Instructions */}
-        <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-8">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-2">
-              How to Browse Products
-            </h3>
-            <p className="text-blue-700 dark:text-blue-200">
-              <strong>Click on any category above</strong> to see only products from that category<br/>
-              <strong>Scroll down</strong> to see all products organized by category<br/>
-              <strong>Click "View Details"</strong> on any product to see full information
-            </p>
-          </div>
-        </div>
-
         {/* Categories */}
         <div className="space-y-16">
           {productCategories.map((category) => (

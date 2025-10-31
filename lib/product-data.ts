@@ -138,18 +138,6 @@ export const productCategories: ProductCategory[] = [
         benefits: ["Heart health", "Cancer prevention", "Skin health", "Eye health"]
       },
       {
-        id: "strawberry",
-        name: "Strawberry",
-        description: "Sweet, fragrant strawberries",
-        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Strawberry.jpeg-seDMzRtquoA6DbQjpPVQFYW9Lp7sb4.jpeg",
-        category: "international-vegetables",
-        nutritionalInfo: "High in Vitamin C, manganese, and antioxidants",
-        growingSeason: "Spring/Summer",
-        detailedDescription: "Sweet, fragrant strawberries perfect for desserts, smoothies, or fresh eating. Grown for maximum sweetness and aroma.",
-        uses: ["Desserts", "Smoothies", "Fresh eating", "Jams"],
-        benefits: ["Immune support", "Heart health", "Anti-aging", "Brain health"]
-      },
-      {
         id: "colored-capsicum",
         name: "Colored Capsicum",
         description: "Vibrant red, yellow, and orange bell peppers",
@@ -212,6 +200,26 @@ export const productCategories: ProductCategory[] = [
         detailedDescription: "High-quality seedlings ready for transplanting. Perfect for home gardeners and small-scale farmers.",
         uses: ["Home gardening", "Small-scale farming", "Urban farming", "Educational projects"],
         benefits: ["Easy to grow", "High success rate", "Time saving", "Cost effective"]
+      }
+    ]
+  },
+  {
+    id: "fruits",
+    name: "Fresh Fruits",
+    description: "Sweet, juicy fruits picked at peak ripeness",
+    icon: "🍓",
+    products: [
+      {
+        id: "strawberry",
+        name: "Strawberry",
+        description: "Sweet, fragrant strawberries",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Strawberry.jpeg-seDMzRtquoA6DbQjpPVQFYW9Lp7sb4.jpeg",
+        category: "fruits",
+        nutritionalInfo: "High in Vitamin C, manganese, and antioxidants",
+        growingSeason: "Spring/Summer",
+        detailedDescription: "Sweet, fragrant strawberries perfect for desserts, smoothies, or fresh eating. Grown for maximum sweetness and aroma.",
+        uses: ["Desserts", "Smoothies", "Fresh eating", "Jams"],
+        benefits: ["Immune support", "Heart health", "Anti-aging", "Brain health"]
       }
     ]
   }
