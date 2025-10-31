@@ -60,6 +60,4 @@ NET100-TCP*
 tor-browser-linux-x86_64-14.5.8/
 VAT3_Return_ODS/
 backend/
-layout.tsx
-page.tsx
 start.sh
